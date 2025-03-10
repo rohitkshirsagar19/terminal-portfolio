@@ -114,8 +114,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to activate Matrix Mode
   function startMatrixEffect() {
-      document.body.style.background = "black";
-      document.body.style.color = "green";
-      printMessage("Matrix mode activated... 👨‍💻");
-  }
+    // Create a full-screen canvas
+    let canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
+    let ctx = canvas.getContext("2d");
+
+    // Set canvas size to full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Matrix characters
+    let matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+    matrixChars = matrixChars.split("");
+
+    // Set font size and columns
+    let fontSize = 16;
+    let columns = canvas.width / fontSize;
+
+    // Array to store drop positions
+    let drops = [];
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+
+    // Function to draw matrix rain
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Transparent black background for fade effect
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#0F0"; // Green text
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            let text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    // Set interval to continuously draw the effect
+    setInterval(drawMatrix, 50);
+
+    // Hide the terminal UI temporarily
+    document.getElementById("terminal").style.display = "none";
+
+    printMessage("Matrix mode activated... Press 'ESC' to exit.");
+    
+    // Listen for ESC key to exit matrix mode
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            // Remove canvas and restore terminal UI
+            document.body.removeChild(canvas);
+            document.getElementById("terminal").style.display = "block";
+        }
+    });
+}
+
 });
