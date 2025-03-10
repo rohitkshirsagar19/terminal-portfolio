@@ -1,0 +1,55 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Set up the body with a dark background and terminal-style font */
+  body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 20px;
+  }
+  
+  /* Style the terminal container to center it and limit its width */
+  .terminal {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Style for each output paragraph */
+  .output p {
+    margin-bottom: 10px;
+  }
+  
+  /* Input line styling for proper alignment */
+  .input-line {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Prompt style */
+  .prompt {
+    margin-right: 5px;
+  }
+  
+  /* Style the input field to match the terminal look */
+  input[type="text"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff00;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  /* Optional: Style placeholder text (if you add one later) */
+  input[type="text"]::placeholder {
+    color: #00ff00;
+    opacity: 0.5;
+  }
+  
