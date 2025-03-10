@@ -1,53 +1,161 @@
-/* Basic Terminal Styling */
+/* Terminal Background */
 body {
-    background-color: #000;
+    background-color: #0d0d0d;
     color: #00ff00;
-    font-family: 'Courier New', monospace;
+    font-family: 'Fira Code', monospace;
     font-size: 16px;
     padding: 20px;
+    margin: 0;
+    text-shadow: 0 0 5px #00ff00;
+    min-height: 100vh;
+    transition: all 0.3s ease;
   }
   
   /* Terminal Container */
   .terminal {
     max-width: 800px;
     margin: 0 auto;
-    height: 90vh;
-    overflow-y: auto;
+    padding: 20px;
+    background-color: rgba(17, 17, 17, 0.9);
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px #00ff00;
+    border-radius: 5px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
   }
   
-  /* Input Line */
+  /* Output Area */
+  .output {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding: 5px;
+  }
+  
+  /* Command Input Line */
   .input-line {
     display: flex;
     align-items: center;
+    padding: 5px 0;
+    border-top: 1px solid #00ff0050;
   }
   
+  /* Prompt Styling */
   .prompt {
-    margin-right: 5px;
+    margin-right: 10px;
+    color: #00ff00;
+    font-weight: bold;
   }
   
-  /* Input Field */
-  input[type="text"] {
+  /* Command Input Styling */
+  #commandInput {
     background: transparent;
     border: none;
     color: #00ff00;
-    font-family: inherit;
-    font-size: inherit;
-    width: 100%;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    flex-grow: 1;
     outline: none;
   }
   
-  /* Themes */
+  /* Blinking Cursor */
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  
+  .prompt::after {
+    content: "_";
+    animation: blink 1s infinite;
+  }
+  
+  /* Make Text Look like Glowing Neon */
+  pre, p {
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    margin: 5px 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Command Text */
+  .command {
+    color: #ffff00;
+    font-weight: bold;
+  }
+  
+  /* Cyberpunk Mode */
   .cyberpunk {
+    background-color: #000;
     color: #0ff;
+    text-shadow: 0 0 5px #0ff;
   }
   
+  .cyberpunk .terminal {
+    border-color: #0ff;
+    box-shadow: 0 0 15px #0ff;
+  }
+  
+  .cyberpunk pre, .cyberpunk p, .cyberpunk .prompt, .cyberpunk #commandInput {
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff;
+  }
+  
+  .cyberpunk .input-line {
+    border-top-color: #0ff50;
+  }
+  
+  /* Retro Mode */
   .retro {
+    background-color: #222;
     color: #ff0;
+    text-shadow: 0 0 5px #ff0;
   }
   
-  .output {
-    min-height: 300px;
-    max-height: 80vh;
-    overflow-y: auto;
-    white-space: pre-line;
-}
+  .retro .terminal {
+    border-color: #ff0;
+    box-shadow: 0 0 15px #ff0;
+    background-color: #333;
+  }
+  
+  .retro pre, .retro p, .retro .prompt, .retro #commandInput {
+    color: #ff0;
+    text-shadow: 0 0 5px #ff0;
+  }
+  
+  .retro .input-line {
+    border-top-color: #ff050;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #111;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+    
+    .terminal {
+      padding: 15px;
+    }
+    
+    #commandInput, pre, p {
+      font-size: 14px;
+    }
+  }
