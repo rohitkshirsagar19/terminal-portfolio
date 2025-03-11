@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 Available commands:
 - help: Display this help message
 - about_me: Learn about Rohit
-- projects: View my coding projects
+- projects: View coding projects
 - skills: See my technical skills
 - experience: View my work experience
 - contact: Get my contact information
