@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const helpText = `
 Available commands:
 - help: Display this help message
-- cls: Clear the terminal screen
 - about_me: Learn about Rohit
 - projects: View my coding projects
 - skills: See my technical skills
@@ -121,14 +120,11 @@ Available commands:
 - download resume: Download my resume
 - git clone <project>: Open GitHub repository
 - ls -la: List files
-- cat fun_fact.txt: Read a fun fact
-- art: Display ASCII art
 - play game: Play Snake game
 - theme cyberpunk: Change to cyberpunk theme
 - theme retro: Change to retro theme
 - theme default: Reset to default theme
 - matrix: Enter the Matrix
-- sudo hackathon_winner: Secret command
       `;
       printMessage(helpText);
   }
